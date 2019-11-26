@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import sopra.formation.model.Evaluation;
-import sopra.formation.model.Stagiaire;
 
 public interface IEvaluationRepository extends JpaRepository<Evaluation, Long> {
 
