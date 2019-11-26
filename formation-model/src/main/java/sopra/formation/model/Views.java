@@ -10,4 +10,8 @@ public class Views {
 	public static class ViewStagiaire extends ViewCommon {}
 	
 	public static class ViewStagiaireDetail extends ViewStagiaire {}
+	
+	public static class ViewMatiere extends ViewCommon {}
+	
+	public static class ViewMatiereDetail extends ViewMatiere {}
 }
