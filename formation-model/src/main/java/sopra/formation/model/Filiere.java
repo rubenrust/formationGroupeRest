@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -17,31 +18,40 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "training", uniqueConstraints = { @UniqueConstraint(columnNames = { "title", "startdate" }) })
 public class Filiere {
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
 	private int version;
 	@Column(name = "title")
+	@JsonView(Views.ViewCommon.class)
 	private String intitule;
 	@Column(name = "prom")
+	@JsonView(Views.ViewCommon.class)
 	private String promotion;
 	@Column(name = "startdate")
+	@JsonView(Views.ViewCommon.class)
 	private Date dtDebut;
 	@Column(name = "duration")
+	@JsonView(Views.ViewCommon.class)
 	private Integer duree;
 	@Enumerated(EnumType.STRING)
 	@Column(name = "device")
+	@JsonView(Views.ViewCommon.class)
 	private Dispositif dispositif;
 	@OneToMany(mappedBy = "filiere")
 	private List<Module> modules = new ArrayList<Module>();
-	@OneToMany(mappedBy = "filiere" )
+	@OneToMany(mappedBy = "filiere")
 	private List<Stagiaire> stagiaires = new ArrayList<Stagiaire>();
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "referent_id")
+	@JsonView(Views.ViewFiliereDetail.class)
 	private Formateur referent;
 
 	public Filiere() {
@@ -61,7 +71,7 @@ public class Filiere {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public int getVersion() {
 		return version;
 	}
