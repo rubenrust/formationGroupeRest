@@ -2,14 +2,26 @@ package sopra.formation.model;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @SuppressWarnings("serial")
 public class SalleId implements Serializable {
+	@JsonView(Views.ViewCommon.class)
 	private String nom;
+	@JsonView(Views.ViewCommon.class)
 	private Integer capacite;
 
 	public SalleId() {
 		super();
 	}
+
+	
+	public SalleId(String nom, Integer capacite) {
+		super();
+		this.nom = nom;
+		this.capacite = capacite;
+	}
+
 
 	public String getNom() {
 		return nom;

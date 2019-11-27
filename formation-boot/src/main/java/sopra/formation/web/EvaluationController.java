@@ -35,7 +35,7 @@ public class EvaluationController {
 	@GetMapping("/{id}")
 	@JsonView(Views.ViewEvaluationDetail.class)
 	public Evaluation find(@PathVariable Long id) {
-		Evaluation evaluation = evaluationRepo.findWithStagiaire(id); 
+		Evaluation evaluation = evaluationRepo.findWithStagiaire(id);
 
 		return evaluation;
 	}

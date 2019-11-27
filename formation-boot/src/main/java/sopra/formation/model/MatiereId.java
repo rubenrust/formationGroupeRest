@@ -7,13 +7,17 @@ import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @SuppressWarnings("serial")
 @Embeddable
 public class MatiereId implements Serializable {
 	@Column(name = "name")
+	@JsonView(Views.ViewCommon.class)
 	private String nom;
 	@Enumerated(EnumType.STRING)
 	@Column(name = "level")
+	@JsonView(Views.ViewCommon.class)
 	private NiveauMatiere niveau;
 
 	public MatiereId() {

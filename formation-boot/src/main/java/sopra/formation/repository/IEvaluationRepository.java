@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import sopra.formation.model.Evaluation;
-import sopra.formation.model.Stagiaire;
 
 public interface IEvaluationRepository extends JpaRepository<Evaluation, Long> {
 
@@ -17,7 +16,6 @@ public interface IEvaluationRepository extends JpaRepository<Evaluation, Long> {
 	
 	@Query("select e from Evaluation e join fetch e.stagiaire s where s.dtNaissance > :dtNais")
 	List<Evaluation> findAllByDtNaissance(@Param("dtNais") Date dtNaissance);
-	
 	List<Evaluation> findByComportementale(Integer comportementale);
 	
 	@Query("from Evaluation e where e.id = :id")
