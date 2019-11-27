@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -20,15 +21,14 @@ public class Formateur extends Personne {
 	@OneToMany(mappedBy = "referent")
 	@JsonView(Views.ViewFormateurDetail.class)
 	private List<Filiere> filieres = new ArrayList<Filiere>();
-	@OneToMany(mappedBy = "formateur")
-	@JsonView(Views.ViewFormateurDetail.class)
-	
+	@OneToMany(mappedBy = "formateur",  fetch = FetchType.EAGER) 
+//	@JsonView(Views.ViewFormateurDetail.class)	
 	private List<Module> modules = new ArrayList<Module>();
 	@ManyToMany
 	@JoinTable(name = "skill", joinColumns = @JoinColumn(name = "trainer_id"), inverseJoinColumns = {
 			@JoinColumn(name = "subject_name", referencedColumnName = "name"),
 			@JoinColumn(name = "subject_level", referencedColumnName = "level") })
-	@JsonView(Views.ViewFormateurDetail.class)
+//	@JsonView(Views.ViewFormateurDetail.class)
 	private List<Matiere> competences = new ArrayList<Matiere>();
 
 	public Formateur() {
