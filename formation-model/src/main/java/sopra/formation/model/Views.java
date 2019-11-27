@@ -18,15 +18,19 @@ public class Views {
 
 	public static class ViewFiliere extends ViewCommon {
 	}
-	
-	public static class ViewMatiere extends ViewCommon {}
-	
-	public static class ViewMatiereDetail extends ViewMatiere {}
-	
-	public static class ViewSalle extends ViewCommon {}
-	
-	public static class ViewSalleDetail extends ViewSalle {}
-	
+
+	public static class ViewMatiere extends ViewCommon {
+	}
+
+	public static class ViewMatiereDetail extends ViewMatiere {
+	}
+
+	public static class ViewSalle extends ViewCommon {
+	}
+
+	public static class ViewSalleDetail extends ViewSalle {
+	}
+
 	public static class ViewFiliereDetail extends ViewFiliere {
 	}
 	
